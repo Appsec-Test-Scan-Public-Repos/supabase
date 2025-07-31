@@ -6,7 +6,7 @@ import {
   AuthProvider,
   FeatureFlagProvider,
   IS_PLATFORM,
-  PageTelemetry,
+  TelemetryProvider,
   ThemeProvider,
   useThemeSandbox,
   TelemetryTagManager,
@@ -98,11 +98,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <SonnerToaster position="top-right" />
                 <Component {...pageProps} />
                 <WwwCommandMenu />
-                <PageTelemetry
-                  API_URL={API_URL}
-                  hasAcceptedConsent={hasAcceptedConsent}
-                  enabled={IS_PLATFORM}
-                />
+                <TelemetryProvider API_URL={API_URL} hasAcceptedConsent={hasAcceptedConsent} />
               </CommandProvider>
             </TooltipProvider>
           </ThemeProvider>
